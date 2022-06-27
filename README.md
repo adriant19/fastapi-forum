@@ -33,25 +33,26 @@ The development of this app served as a learning opportunity to better understan
 -   Jinja2 template engine
 -   APIRouter for path operations
 
-## Preview
+## Previews
 
-##### Home page
+##### Homepage
 
 > Contains all posts in a table format, containing the main content and tied to them are the corresponding replies that were issued within the view of the post. Replies submitted by users within each post would update the `update_at` field.
 
-![Homepage](images/preview.png)
+![Homepage](previews/homepage.png)
 
-##### Post page
+##### Viewpage
 
 > Contains the main post selected that have been viewed followed by submitted replies.
 
-![Post Page](images/viewpage.png)
+![Post Page](previews/viewpage.png)
 
 ## Learnings and potential improvements
 
 -   Redis OM was used to experiment with alternative databasing approaches. The setup of Redis was convenient and the usage of the data objects (`HashModel`) made development quick and easy.
 -   For simplicity reasons, the API was developed without user authentication (i.e. with JWT tokenisation). Further development with user base features could be introduced.
 -   Issues with the datetime capture the same "runtime" datetime when performing multiple POST requests to either create posts or replies was not resolved (open to feedback on how to resolve this).
+-   **Possible limitation with Heroku**: the app tends to load quite slowly when performing actions.
 
 ## Repository structure
 
@@ -72,6 +73,10 @@ The development of this app served as a learning opportunity to better understan
 │       ├── database.py                 < connection setup to redis-om
 │       ├── main.py                     < launching of app
 │       ├── schemas.py                  < creation of data objects
+│
+├── previews                            < images for readme.md
+│       ├── homepage.png                < preview of homepage with posts
+│       ├── viewpage.png                < preview of selected post and replies
 │
 ├── .gitignore                          < ignore listed folders and files for commits to git.
 ├── Procfile                            < command to be executed on Heroku app upon start-up
