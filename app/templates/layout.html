@@ -1,0 +1,74 @@
+<html>
+
+<style>
+    /* CSS template */
+
+    h2 {
+        color: #4CACBC;
+        border-bottom: solid 2px #E1E1E1;
+        word-wrap: break-word;
+    }
+
+    a {
+        padding: 5px;
+        text-align: center;
+        width: 100px;
+        font-style: italic;
+        font-family: Gill Sans, Gill Sans MT, Calibri, Trebuchet MS, sans-serif;
+    }
+
+    table {
+        table-layout: fixed;
+    }
+
+    .ellipsis {
+        max-width: 40px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+</style>
+
+<head>
+
+    <title>FastAPI Project</title>
+
+    <!-- Import stylesheet -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous">
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+
+</head>
+
+<body>
+
+    <!-- Center texts inside container -->
+    <div class="ui container" style="margin-top: 80px;">
+
+        <h1>FastAPI Project - Forum</h1>
+        <hr>
+        </hr>
+        <a href="/" method="GET">Homepage</a>
+
+        <!-- Placeholders from python files -->
+
+        {% block content %}
+        {% endblock %}
+
+    </div>
+
+</body>
+
+<footer class="ui container">
+    <br></br>
+    <hr>
+    </hr>
+    <p><b>Author</b>: <i>Adrian T.</i> <a href="https://github.com/adriant19" target="_blank">(Github)</a></p>
+</footer>
+
+</html>

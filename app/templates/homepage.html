@@ -1,0 +1,113 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+<!-- Script -->
+
+<script>
+    $(document).ready(function () {
+
+        $("#create_post").click(function () { $(".ui.modal").modal("show"); });
+
+        $("#submit").click(function () {
+
+            $.ajax({ // send POST request to create post
+                url: "/post",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    "title": $("#post_title").val(),
+                    "content": $("#post_content").val()
+                }),
+                dataType: "json"
+            });
+
+            $(".ui.modal").modal("hide");
+
+            window.location.reload();
+
+        });
+
+    });
+</script>
+
+
+<!-- Page setup -->
+
+<h2 style="margin-bottom: 50px; padding-bottom: 10px;">Forum</h2>
+
+
+<!-- Create Post -->
+
+<button id="create_post" class="ui button secondary">Create Post</button>
+
+
+<!-- Table -->
+
+<table class="ui celled table">
+
+    <thead>
+        <tr>
+            <th style="width: 10%"></th>
+            <th style="width: 20%">Title</th>
+            <th style="width: 40%">Content</th>
+            <th style="width: 10%">Replies</th>
+            <th style="width: 20%">Last Updated</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for post in posts %}
+        <tr>
+            <td data-label={{ post.pk }} style="text-align: center;">
+                <form action="/post/{{ post.pk }}" method="GET">
+                    <input type="submit" value="View" />
+                </form>
+            </td>
+            <td class="ellipsis" data-label="Post Title">{{ post.title }}</td>
+            <td class="ellipsis" data-label="Content">{{ post.content }}</td>
+            <td data-label="# Replies">{{ post.replies }}</td>
+            <td data-label="Last Updated">{{ post.updated_at }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+</table>
+
+
+<!-- Create post -->
+
+<div class="ui modal">
+
+    <i class="close icon"></i>
+    <div class="header">Create Post</div>
+
+    <div class="content">
+
+        <div class="ui form">
+            <div class="required field">
+                <label style="padding-top: 15px;">Post Title</label>
+                <input type="text" id="post_title" name="post_title" maxlength="100">
+            </div>
+        </div>
+
+        <div class="ui form">
+            <div class="required field">
+                <label style="padding-top: 15px">Post Content</label>
+                <textarea id="post_content" name="post_content"></textarea>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="actions">
+        <div id="submit" class="ui positive right labeled icon button" onClick="window.location.reload();">
+            Submit
+            <i class="plus icon"></i>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}

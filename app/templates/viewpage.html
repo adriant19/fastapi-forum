@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<style>
+    .content-format {
+        font-size: 14px;
+    }
+
+    .reply {
+        font-weight: bold;
+        color: #6CC4A1;
+    }
+</style>
+
+<!-- Script -->
+
+<script>
+    $(document).ready(function () {
+        $("#reply_post").click(function () {
+
+            var post_id = window.location.pathname.split('/')[2];
+            var content = $("#reply_content").val();
+            console.log(post_id, content)
+
+            $.ajax({ // send POST request to create reply
+                url: "/reply",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify({
+                    "post_id": post_id,
+                    "content": content
+                }),
+                dataType: "json"
+            });
+
+        })
+    })
+</script>
+
+
+<!-- Page setup -->
+
+<h2 style="margin-bottom: 50px; padding-bottom: 10px; text-transform: uppercase;">{{ title }}</h2>
+
+
+<!-- Post Body -->
+
+<div class="ui container" style="word-wrap: break-word; padding-bottom: 50px; border-bottom: solid 2px;">
+    <p>{{ content }}</p>
+</div>
+
+
+<!-- Replies Body -->
+
+{% for reply in replies %}
+
+
+<div style="padding: 20px;">
+    <p class="reply">{{ reply.created_at }}</p>
+    {{ reply.content }}
+</div>
+<hr style="width: 50%; margin-left: 5px; border-top: 1px solid #E1E1E1">
+</hr>
+
+{% endfor %}
+
+
+<!-- Create reply -->
+
+<div class="ui form" style="padding-bottom: 15px;">
+    <div class="required field">
+        <label style="padding-top: 15px">Reply Content</label>
+        <textarea id="reply_content"></textarea>
+    </div>
+</div>
+
+<button id="reply_post" class="ui button secondary">Reply Post</button>
+
+
+{% endblock %}
