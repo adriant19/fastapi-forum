@@ -1,9 +1,5 @@
 # FASTAPI FORUM APP
 
-<a href="https://fastapi-forum.herokuapp.com/">
-<img alt="Powered by Heroku" title="Powered by 
-Heroku" src="https://img.shields.io/badge/-Powered%20by%20Heroku-6567a5?style=for-the-badge&logo=heroku&logoColor=white"/></a>
-
 ![GitHub last commit](https://img.shields.io/github/last-commit/adriant19/fastapi-forum)
 ![GitHub repo size](https://img.shields.io/github/repo-size/adriant19/fastapi-forum)
 ![License](https://img.shields.io/badge/License-MIT-green)
@@ -87,4 +83,4 @@ The development of this app served as a learning opportunity to better understan
 
 ## Final remarks
 
-A barebone HTML frontend UI (no prior experience with HTML) was used to provide simple interactability for users to test the functionalities of the API.
+A barebone HTML frontend UI (no prior experience with HTML) was used to provide simple interactability for users to test the functionalities of the API. Initially, this project was originally hosted on Heroku for viewers to have a "look-and-feel" of the development done. Unfortunately, as of late 2022 the platform has stopped providing free hostings; making the web app inaccessible. Alternatives to explore are Firebase.
